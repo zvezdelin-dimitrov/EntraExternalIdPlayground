@@ -53,7 +53,7 @@ public partial class MainPage : ContentPage
     private async void CallApiClicked(object sender, EventArgs e)
     {
         // Extract url to config
-        var response = await httpClient.GetAsync("https://localhost:32783/userdata");
+        var response = await httpClient.GetAsync("https://localhost:44355/userdata");
         var responseContent = await response.Content.ReadAsStringAsync();
         ApiResult.Text = responseContent;
     }
