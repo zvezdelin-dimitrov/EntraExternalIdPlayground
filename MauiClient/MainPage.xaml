@@ -20,8 +20,15 @@
                 </ListView.ItemTemplate>
             </ListView>
 
+            <Button Text="Sign In"
+                    x:Name="SignInButton"
+                    Clicked="SignInClicked"
+                    HorizontalOptions="Fill" />
+
             <Button
                 Text="Call API" 
+                IsEnabled="False"
+                x:Name="CallApiButton"
                 Clicked="CallApiClicked"
                 HorizontalOptions="Fill" />
 

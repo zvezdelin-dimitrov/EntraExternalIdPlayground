@@ -5,23 +5,21 @@ namespace MauiClient;
 
 public partial class MainPage : ContentPage
 {
-    private HttpClient httpClient = new();
+    private readonly HttpClient httpClient = new();
 
     public MainPage()
     {
-        // This initialization should be at application level, RedirectUri is platform specific
-        PlatformConfig.Instance.RedirectUri = PublicClientSingleton.Instance.MSALClientHelper.AzureADConfig.RedirectURI;
-        var existinguser = Task.Run(PublicClientSingleton.Instance.MSALClientHelper.InitializePublicClientAppAsync).Result;
-
         InitializeComponent();
 
-        Authenticate();                
+        var cachedUserAccount = PublicClientSingleton.Instance.MSALClientHelper.FetchSignedInUserFromCache().Result;
+        if (cachedUserAccount is not null)
+        {
+            Authenticate();
+        }
     }
 
     private async Task Authenticate()
     {
-        var cachedUserAccount = await PublicClientSingleton.Instance.MSALClientHelper.FetchSignedInUserFromCache();
-
         // This will launch authentication in the default browser if cachedUserAccount is null
         var token = await PublicClientSingleton.Instance.AcquireTokenSilentAsync();
 
@@ -47,7 +45,21 @@ public partial class MainPage : ContentPage
             { "nameFromClaim", nameFromClaim },
         };
 
+        CallApiButton.IsEnabled = true;
+        SignInButton.IsEnabled = false;
+
         httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+    }
+
+    private async void SignInClicked(object sender, EventArgs e)
+    {
+        await Authenticate();
+
+#if WINDOWS
+        // Hack to activate the application
+        // Check if the new ActivateWindow in .NET 9 will work
+        WinUI.App.Activate();
+#endif
     }
 
     private async void CallApiClicked(object sender, EventArgs e)

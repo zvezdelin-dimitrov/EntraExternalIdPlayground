@@ -44,7 +44,7 @@ namespace MsalClientLib
         /// <value>
         /// The redirect URI.
         /// </value>
-        public string RedirectURI { get; set; }
+        public string RedirectUriWindows { get; set; }
 
         /// <summary>
         /// Gets or sets the file name of the token cache file.

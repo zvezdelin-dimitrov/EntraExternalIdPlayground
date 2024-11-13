@@ -1,4 +1,5 @@
-﻿using Microsoft.UI.Xaml;
+﻿using MsalClientLib;
+using System.Runtime.InteropServices;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -16,10 +17,19 @@ namespace MauiClient.WinUI
         /// </summary>
         public App()
         {
-            this.InitializeComponent();
+            InitializeComponent();
+            PlatformConfig.Instance.RedirectUri = PublicClientSingleton.Instance.MSALClientHelper.AzureADConfig.RedirectUriWindows;
         }
 
         protected override MauiApp CreateMauiApp() => MauiProgram.CreateMauiApp();
-    }
 
+        public static void Activate()
+        {
+            var windowHandle = ((MauiWinUIWindow)MauiClient.App.Current.Windows[0].Handler.PlatformView).WindowHandle;
+            SetForegroundWindow(windowHandle);
+        }
+
+        [DllImport("user32.dll")]
+        private static extern bool SetForegroundWindow(IntPtr hWnd);
+    }
 }
