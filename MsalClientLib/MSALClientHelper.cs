@@ -142,20 +142,18 @@ namespace MsalClientLib
         /// <returns>IAccount list of already signed-in users (if available)</returns>
         private async Task<IEnumerable<IAccount>> AttachTokenCache()
         {
-            //if (DeviceInfo.Current.Platform != DevicePlatform.WinUI)
-            //{
-            //    return null;
-            //}
-
+#if WINDOWS
             // Cache configuration and hook-up to public application. Refer to https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet/wiki/Cross-platform-Token-Cache#configuring-the-token-cache
-            var storageProperties = new StorageCreationPropertiesBuilder(AzureADConfig.CacheFileName, AzureADConfig.CacheDir)
-                    .Build();
+            var storageProperties = new StorageCreationPropertiesBuilder(AzureADConfig.CacheFileName, AzureADConfig.CacheDir).Build();
 
             var msalcachehelper = await MsalCacheHelper.CreateAsync(storageProperties);
             msalcachehelper.RegisterCache(PublicClientApplication.UserTokenCache);
 
             // If the cache file is being reused, we'd find some already-signed-in accounts
             return await PublicClientApplication.GetAccountsAsync().ConfigureAwait(false);
+#else
+            return null;
+#endif
         }
 
         /// <summary>
