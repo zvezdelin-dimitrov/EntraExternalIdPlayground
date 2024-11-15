@@ -93,7 +93,7 @@ namespace MsalClientLib
         /// Signout the user and delete old GraphServiceClient
         /// </summary>
         /// <returns></returns>
-        internal async Task SignOutAsync()
+        public async Task SignOutAsync()
         {
             await MSALClientHelper.SignOutUserAsync().ConfigureAwait(false);
         }

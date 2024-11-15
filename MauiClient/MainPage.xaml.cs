@@ -47,6 +47,7 @@ public partial class MainPage : ContentPage
 
         CallApiButton.IsEnabled = true;
         SignInButton.IsEnabled = false;
+        SignOutButton.IsEnabled = true;
 
         httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
     }
@@ -60,6 +61,17 @@ public partial class MainPage : ContentPage
         // Check if the new ActivateWindow in .NET 9 will work
         WinUI.App.Activate();
 #endif
+    }
+
+    private async void SignOutClicked(object sender, EventArgs e)
+    {
+        await PublicClientSingleton.Instance.SignOutAsync();
+
+        UserData.ItemsSource = null;
+
+        CallApiButton.IsEnabled = false;
+        SignInButton.IsEnabled = true;
+        SignOutButton.IsEnabled = false;
     }
 
     private async void CallApiClicked(object sender, EventArgs e)

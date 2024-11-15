@@ -25,6 +25,12 @@
                     Clicked="SignInClicked"
                     HorizontalOptions="Fill" />
 
+            <Button Text="Sign Out"
+                    IsEnabled="False"
+                    x:Name="SignOutButton"
+                    Clicked="SignOutClicked"
+                    HorizontalOptions="Fill" />
+
             <Button
                 Text="Call API" 
                 IsEnabled="False"
