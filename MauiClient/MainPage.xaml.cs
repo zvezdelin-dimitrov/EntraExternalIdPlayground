@@ -22,6 +22,10 @@ public partial class MainPage : ContentPage
     {
         // This will launch authentication in the default browser if cachedUserAccount is null
         var token = await PublicClientSingleton.Instance.AcquireTokenSilentAsync();
+        if (token is null)
+        {
+            return;
+        }
 
         var expires = PublicClientSingleton.Instance.MSALClientHelper.AuthResult.ExpiresOn.ToLocalTime();
         var scopes = PublicClientSingleton.Instance.MSALClientHelper.AuthResult.Scopes.ToList();

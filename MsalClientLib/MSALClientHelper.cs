@@ -2,8 +2,10 @@
 // Licensed under the MIT License.
 
 using Microsoft.Identity.Client;
+// This is needed only if embedded browser is used on WINDOWS
+// TODO: Split the app to remove the dependency if not needed
 #if WINDOWS
-//using Microsoft.Identity.Client.Desktop;
+using Microsoft.Identity.Client.Desktop;
 #endif
 using Microsoft.Identity.Client.Extensions.Msal;
 using Microsoft.IdentityModel.Abstractions;
@@ -104,7 +106,7 @@ namespace MsalClientLib
             PublicClientApplication = PublicClientApplicationBuilder
                 .WithRedirectUri(PlatformConfig.Instance.RedirectUri)   // redirect URI is set later in PlatformConfig when the platform has been decided
 #if WINDOWS
-                //.WithWindowsEmbeddedBrowserSupport()
+                .WithWindowsEmbeddedBrowserSupport()
 #endif
                 .Build();
 
@@ -123,9 +125,8 @@ namespace MsalClientLib
                 .WithRedirectUri(PlatformConfig.Instance.RedirectUri)   // redirect URI is set later in PlatformConfig when the platform is decided
 #if ANDROID || IOS
                 .WithBroker()
-#endif
-#if WINDOWS
-                //.WithBroker(new BrokerOptions(BrokerOptions.OperatingSystems.Windows))
+#elif WINDOWS
+                .WithBroker(new BrokerOptions(BrokerOptions.OperatingSystems.Windows))
 #endif
                 .WithParentActivityOrWindow(() => PlatformConfig.Instance.ParentWindow)   // This is required when using the WAM broker and is set later in PlatformConfig when the platform has been decided
                 .Build();
@@ -207,11 +208,14 @@ namespace MsalClientLib
             }
             catch (MsalException msalEx)
             {
-                Debug.WriteLine($"Error Acquiring Token interactively:{Environment.NewLine}{msalEx}");
-                throw msalEx;
+                if (msalEx.ErrorCode != "authentication_canceled")
+                {
+                    Debug.WriteLine($"Error Acquiring Token interactively:{Environment.NewLine}{msalEx}");
+                    throw;
+                }
             }
 
-            return AuthResult.AccessToken;
+            return AuthResult?.AccessToken;
         }
 
         /// <summary>
