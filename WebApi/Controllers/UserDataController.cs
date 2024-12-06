@@ -23,6 +23,7 @@ public class UserDataController : ControllerBase
     public async Task<UserData> Get()
     {
         // In order for this to work, the User.Read Microsoft Graph should be added in API permissions
+        // A valid client secret should also be present in the appsettings (a possible workaround is impersonating the user, but it will require an additional request, more code and additional permissions) 
         var userFromGraph = await _graphServiceClient.Me.Request().GetAsync();
 
         // Should be added if needed during registration or from an admin later
