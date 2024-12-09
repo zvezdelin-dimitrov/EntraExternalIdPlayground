@@ -8,7 +8,8 @@ namespace MauiClient.Platforms.Android;
 [IntentFilter([Intent.ActionView],
     Categories = [Intent.CategoryBrowsable, Intent.CategoryDefault],
     DataHost = "auth",
-    DataScheme = "msal77a20c28-2f64-4ccb-857c-e47a0f609666")]
+    // TODO: Check if it is possible NOT to hardcode this
+    DataScheme = "msal5861191c-aba9-45d8-90e7-8b64da4ee00a")]
 public class MsalActivity : BrowserTabActivity
 {
 }
