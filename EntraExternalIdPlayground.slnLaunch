@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "Client and API",
+    "Projects": [
+      {
+        "Path": "WebApi\\WebApi.csproj",
+        "Action": "StartWithoutDebugging"
+      },
+      {
+        "Path": "MauiClient\\MauiClient.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]
