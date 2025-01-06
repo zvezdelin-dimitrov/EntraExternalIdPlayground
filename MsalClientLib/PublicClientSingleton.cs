@@ -3,6 +3,7 @@
 
 using Microsoft.Extensions.Configuration;
 using Microsoft.Identity.Client;
+using MSALClientLib.Graph;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 
@@ -29,6 +30,8 @@ namespace MsalClientLib
         public MSALClientHelper MSALClientHelper { get; }
 
         public DownstreamApiHelper DownstreamApiHelper { get; }
+
+        public MSGraphHelper MSGraphHelper { get; }
 
         /// <summary>
         /// This will determine if the Interactive Authentication should be Embedded or System view
@@ -57,6 +60,9 @@ namespace MsalClientLib
 
             DownStreamApiConfig downStreamApiConfig = AppConfiguration.GetSection("DownstreamApi").Get<DownStreamApiConfig>();
             DownstreamApiHelper = new DownstreamApiHelper(downStreamApiConfig, MSALClientHelper);
+
+            MSGraphApiConfig graphApiConfig = AppConfiguration.GetSection("MSGraphApi").Get<MSGraphApiConfig>();
+            MSGraphHelper = new MSGraphHelper(graphApiConfig, MSALClientHelper);
         }
 
         /// <summary>

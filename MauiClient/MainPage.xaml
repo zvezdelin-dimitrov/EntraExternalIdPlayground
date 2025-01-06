@@ -38,6 +38,12 @@
                 Clicked="CallApiClicked"
                 HorizontalOptions="Fill" />
 
+            <Button Text="Get Graph Data"
+                    IsEnabled="False"
+                    x:Name="GetGraphDataButton"
+                    Clicked="GetGraphDataClicked"
+                    HorizontalOptions="Fill" />
+
             <Label x:Name="ApiResult" />
         </VerticalStackLayout>
     </ScrollView>

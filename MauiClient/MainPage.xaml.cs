@@ -50,6 +50,7 @@ public partial class MainPage : ContentPage
         };
 
         CallApiButton.IsEnabled = true;
+        GetGraphDataButton.IsEnabled = true;
         SignInButton.IsEnabled = false;
         SignOutButton.IsEnabled = true;
 
@@ -74,6 +75,7 @@ public partial class MainPage : ContentPage
         UserData.ItemsSource = null;
 
         CallApiButton.IsEnabled = false;
+        GetGraphDataButton.IsEnabled = false;
         SignInButton.IsEnabled = true;
         SignOutButton.IsEnabled = false;
     }
@@ -84,5 +86,15 @@ public partial class MainPage : ContentPage
         var response = await httpClient.GetAsync("https://localhost:44355/userdata");
         var responseContent = await response.Content.ReadAsStringAsync();
         ApiResult.Text = responseContent;
+    }
+
+    private async void GetGraphDataClicked(object sender, EventArgs e)
+    {
+        // In order for this to work, the User.Read Microsoft Graph should be added in API permissions
+        var user = await PublicClientSingleton.Instance.MSGraphHelper.GetMeAsync();
+        var displayNameFromGraph = user.DisplayName;
+        var emailFromGraph = user.Mail;
+        ApiResult.Text = $"{nameof(displayNameFromGraph)}:{displayNameFromGraph}, {nameof(emailFromGraph)}:{emailFromGraph}";
+        //var userPhoto = ImageSource.FromStream(async _ => await PublicClientSingleton.Instance.MSGraphHelper.GetMyPhotoAsync());
     }
 }
