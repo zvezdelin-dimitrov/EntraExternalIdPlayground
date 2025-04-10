@@ -47,13 +47,10 @@ namespace MsalClientLib
         [MethodImpl(MethodImplOptions.NoInlining)]
         private PublicClientSingleton()
         {
-            // Load config
             var assembly = Assembly.GetExecutingAssembly();
-            string embeddedConfigfilename = $"{Assembly.GetCallingAssembly().GetName().Name}.appsettings.json";
+            var embeddedConfigfilename = $"{assembly.GetName().Name}.msal.appsettings.json";
             using var stream = assembly.GetManifestResourceStream(embeddedConfigfilename);
-            AppConfiguration = new ConfigurationBuilder()
-                .AddJsonStream(stream)
-                .Build();
+            AppConfiguration = new ConfigurationBuilder().AddJsonStream(stream).Build();
 
             AzureADConfig azureADConfig = AppConfiguration.GetSection("AzureAD").Get<AzureADConfig>();
             MSALClientHelper = new MSALClientHelper(azureADConfig);

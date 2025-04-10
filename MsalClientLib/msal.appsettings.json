@@ -1,4 +1,3 @@
-// Move config to client project
 {
   "AzureAD": {
     "Authority": "https://zvezdocustomers.ciamlogin.com/",
