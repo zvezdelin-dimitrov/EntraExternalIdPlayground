@@ -13,5 +13,6 @@
   },
   "MSGraphApi": {
     "Scopes": "user.read"
-  }
+  },
+  "UseEmbeddedBrowser": true
 }

@@ -36,7 +36,7 @@ namespace MsalClientLib
         /// <summary>
         /// This will determine if the Interactive Authentication should be Embedded or System view
         /// </summary>
-        public bool UseEmbedded { get; set; } = false;
+        public bool UseEmbedded { get; set; }
 
         //// Custom logger for sample
         //private readonly IdentityLogger _logger = new IdentityLogger();
@@ -60,6 +60,8 @@ namespace MsalClientLib
 
             MSGraphApiConfig graphApiConfig = AppConfiguration.GetSection("MSGraphApi").Get<MSGraphApiConfig>();
             MSGraphHelper = new MSGraphHelper(graphApiConfig, MSALClientHelper);
+
+            UseEmbedded = AppConfiguration.GetValue<bool>("UseEmbeddedBrowser");
         }
 
         /// <summary>
