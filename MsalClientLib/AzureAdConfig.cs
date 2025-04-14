@@ -52,7 +52,7 @@ namespace MsalClientLib
         /// <value>
         /// The name of the cache file.
         /// </value>
-        public string CacheFileName { get; set; }
+        public string CacheFileNameWindows { get; set; }
 
         /// <summary>
         /// Gets or sets the token cache file dir.
@@ -60,7 +60,7 @@ namespace MsalClientLib
         /// <value>
         /// The cache dir.
         /// </value>
-        public string CacheDir { get; set; }
+        public string CacheDirWindows { get; set; }
 
         /// <summary>
         /// Gets or sets the android redirect URI.

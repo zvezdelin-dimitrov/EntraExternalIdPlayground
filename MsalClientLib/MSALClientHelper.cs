@@ -145,7 +145,7 @@ namespace MsalClientLib
         {
 #if WINDOWS
             // Cache configuration and hook-up to public application. Refer to https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet/wiki/Cross-platform-Token-Cache#configuring-the-token-cache
-            var storageProperties = new StorageCreationPropertiesBuilder(AzureADConfig.CacheFileName, AzureADConfig.CacheDir).Build();
+            var storageProperties = new StorageCreationPropertiesBuilder(AzureADConfig.CacheFileNameWindows, AzureADConfig.CacheDirWindows).Build();
 
             var msalcachehelper = await MsalCacheHelper.CreateAsync(storageProperties);
             msalcachehelper.RegisterCache(PublicClientApplication.UserTokenCache);

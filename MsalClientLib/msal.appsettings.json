@@ -4,8 +4,8 @@
     "TenantId": "ad33f885-5803-486e-8e0a-8726ae3ad549",
     "ClientId": "5861191c-aba9-45d8-90e7-8b64da4ee00a",
     "RedirectUriWindows": "http://localhost",
-    "CacheFileName": "MauiCache.txt",
-    "CacheDir": "C:/Temp"
+    "CacheFileNameWindows": "MauiCache.txt",
+    "CacheDirWindows": "C:/Temp"
   },
   "DownstreamApi": {
     // Permission must be granted from "API Permissions"
