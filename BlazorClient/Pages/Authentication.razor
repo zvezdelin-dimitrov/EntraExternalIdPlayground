@@ -1,0 +1,15 @@
+﻿@page "/authentication/{action}"
+
+@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
+
+<RemoteAuthenticatorView Action="@Action">
+    @* These are needed to avoid default messages, can also be customized *@
+    <LoggingIn />
+    <LogInFailed />
+    <LogOut />
+    <LogOutSucceeded />
+</RemoteAuthenticatorView>
+
+@code {
+    [Parameter] public string Action { get; set; }
+}

@@ -1,0 +1,33 @@
+﻿@page "/user-data"
+
+<PageTitle>User Data</PageTitle>
+
+<h1>User Data</h1>
+
+<h3>Identity Data</h3>
+
+@if (User is not null)
+{
+    // In order for this to work, the optional email claim for ID TOKEN should be added in token configuration
+    <p>Email Claim: @User.Claims.SingleOrDefault(x => x.Type == "email")?.Value</p>
+
+    // This usually is the email
+    <p>Preferred Username Claim: @User.Claims.SingleOrDefault(x => x.Type == "preferred_username")?.Value;</p>
+
+    // Should be added if needed during registration or from an admin later
+    <p>Name Claim: @User.Claims.SingleOrDefault(x => x.Type == "name")?.Value</p>
+
+    // This is the "name" claim by default, but is configurable (currently "preferred_username")
+    <p>Identity Name: @User.Identity.Name</p>
+}
+
+<h3>API Calls</h3>
+
+<button class="btn btn-primary" @onclick="CallApi">Call API</button>
+
+<button class="btn btn-primary mx-4" @onclick="GetGraphData">Get Graph Data</button>
+
+@if (Response is not null)
+{
+    <p class="text-break my-4">Response: @Response</p>
+}
