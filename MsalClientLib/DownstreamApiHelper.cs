@@ -1,27 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace MsalClientLib;
 
-namespace MsalClientLib
+public class DownstreamApiHelper
 {
-    public class DownstreamApiHelper
+    private readonly string[] DownstreamApiScopes;
+    public DownStreamApiConfig DownstreamApiConfig;
+    private readonly MSALClientHelper MSALClient;
+
+    public DownstreamApiHelper(DownStreamApiConfig downstreamApiConfig, MSALClientHelper msalClientHelper)
     {
-        private string[] DownstreamApiScopes;
-        public DownStreamApiConfig DownstreamApiConfig;
-        private MSALClientHelper MSALClient;
-
-        public DownstreamApiHelper(DownStreamApiConfig downstreamApiConfig, MSALClientHelper msalClientHelper)
+        if (msalClientHelper == null)
         {
-            if (msalClientHelper == null)
-            {
-                throw new ArgumentNullException(nameof(msalClientHelper));
-            }
-
-            DownstreamApiConfig = downstreamApiConfig;
-            MSALClient = msalClientHelper;
-            DownstreamApiScopes = DownstreamApiConfig.ScopesArray;
+            throw new ArgumentNullException(nameof(msalClientHelper));
         }
+
+        DownstreamApiConfig = downstreamApiConfig;
+        MSALClient = msalClientHelper;
+        DownstreamApiScopes = DownstreamApiConfig.ScopesArray;
     }
 }
