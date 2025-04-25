@@ -9,8 +9,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiClient", "MauiClient\Ma
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MsalClientLib", "MsalClientLib\MsalClientLib.csproj", "{3037BD97-8E35-4A8F-BD9E-92F2FA458E31}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApiWithoutGraph", "WebApiWithoutGraph\WebApiWithoutGraph.csproj", "{C979DF6A-05FD-4781-A878-3177C84D04D6}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorClient", "BlazorClient\BlazorClient.csproj", "{6541B506-8399-4A12-8FC6-38AEEF4ADC65}"
 EndProject
 Global
@@ -33,10 +31,6 @@ Global
 		{3037BD97-8E35-4A8F-BD9E-92F2FA458E31}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3037BD97-8E35-4A8F-BD9E-92F2FA458E31}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3037BD97-8E35-4A8F-BD9E-92F2FA458E31}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C979DF6A-05FD-4781-A878-3177C84D04D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C979DF6A-05FD-4781-A878-3177C84D04D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C979DF6A-05FD-4781-A878-3177C84D04D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C979DF6A-05FD-4781-A878-3177C84D04D6}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6541B506-8399-4A12-8FC6-38AEEF4ADC65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6541B506-8399-4A12-8FC6-38AEEF4ADC65}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6541B506-8399-4A12-8FC6-38AEEF4ADC65}.Release|Any CPU.ActiveCfg = Release|Any CPU
