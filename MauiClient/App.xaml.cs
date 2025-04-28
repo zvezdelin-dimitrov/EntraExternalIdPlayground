@@ -8,6 +8,6 @@ public partial class App : Application
     {
         InitializeComponent();
         var existingUser = Task.Run(PublicClientSingleton.Instance.MSALClientHelper.InitializePublicClientAppAsync).Result;
-        MainPage = new AppShell();
+        MainPage = new MainPage();
     }
 }
