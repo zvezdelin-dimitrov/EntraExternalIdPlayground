@@ -7,17 +7,17 @@
 
   <ItemGroup>
 	<!--This is needed only if graph api is used-->
-  	<PackageReference Include="Microsoft.Graph" Version="5.64.0" />
-  	<PackageReference Include="Microsoft.Identity.Client" Version="4.66.2" />
-  	<PackageReference Include="Microsoft.Identity.Client.Extensions.Msal" Version="4.66.2" />
-  	<PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="9.0.0" />
-  	<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="9.0.0" />
+  	<PackageReference Include="Microsoft.Graph" Version="5.77.0" />
+  	<PackageReference Include="Microsoft.Identity.Client" Version="4.71.0" />
+  	<PackageReference Include="Microsoft.Identity.Client.Extensions.Msal" Version="4.71.0" />
+  	<PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="9.0.4" />
+  	<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="9.0.4" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'net8.0-windows10.0.19041.0'">
 	<!--This is needed only if embedded browser is used-->
-	<!--Currently not working with .NET 9-->
-  	<PackageReference Include="Microsoft.Identity.Client.Desktop" Version="4.66.2" />
+	<!--Currently not working on windows with .NET 9-->
+  	<PackageReference Include="Microsoft.Identity.Client.Desktop" Version="4.71.0" />
   </ItemGroup>
 
   <ItemGroup>
