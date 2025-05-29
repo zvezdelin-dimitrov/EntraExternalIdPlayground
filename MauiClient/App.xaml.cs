@@ -1,13 +1,10 @@
-﻿using MsalClientLib;
-
-namespace MauiClient;
+﻿namespace MauiClient;
 
 public partial class App : Application
 {
-    public App()
+    public App(MainPage mainPage)
     {
         InitializeComponent();
-        var existingUser = Task.Run(PublicClientSingleton.Instance.MSALClientHelper.InitializePublicClientAppAsync).Result;
-        MainPage = new MainPage();
+        MainPage = mainPage;
     }
 }
