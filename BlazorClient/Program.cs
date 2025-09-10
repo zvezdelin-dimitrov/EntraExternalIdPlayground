@@ -25,6 +25,7 @@ builder.Services.AddHttpClient(Constants.ZvezdoApi, client => client.BaseAddress
 
 builder.Services.AddHttpClient(Constants.GraphApi, client => client.BaseAddress = new Uri(builder.Configuration["GraphApiUrl"]))
     // This adds the access token with needed scope to every request
+    // In order for this to work, the User.Read Microsoft Graph should be added in API permissions
     .AddHttpMessageHandler(sp => sp.GetRequiredService<AuthorizationMessageHandler>().ConfigureHandler([builder.Configuration["GraphApiUrl"]], [builder.Configuration["GraphApiRequiredScopes"]]));
 
 await builder.Build().RunAsync();

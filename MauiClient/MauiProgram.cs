@@ -14,7 +14,7 @@ public static class MauiProgram
         builder.Services.AddTransient<MainPage>().AddTransient<MainPageViewModel>();
 
 #if DEBUG
-		builder.Logging.AddDebug();
+        builder.Logging.AddDebug();
 #endif
 
         var assembly = Assembly.GetExecutingAssembly();

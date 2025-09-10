@@ -12,6 +12,7 @@
     "Scopes": "api://e8a88996-114b-4b36-862c-f640ea652fb5/ZvezdoApi.Read"
   },
   "MSGraphApi": {
+    // User.Read graph permission must be granted from "API Permissions"
     "Scopes": "user.read"
   },
   "UseEmbeddedBrowser": true
